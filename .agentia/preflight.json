@@ -1,0 +1,8 @@
+{
+  "minimumNodeMajor": 22,
+  "requireSalesforceCli": true,
+  "minimumSfCliVersion": "2.100.0",
+  "requiredSfPlugins": [],
+  "checkOrg": true,
+  "notes": "Pipeline runtime contract for APT Pipeline. Preflight blocks commits whose machine does not meet it."
+}

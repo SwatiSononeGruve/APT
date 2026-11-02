@@ -2,9 +2,16 @@
 set -euo pipefail
 
 # Local Agentia quality gates (macOS / Linux).
-# Edit this script to match your project. Agentia runs it from the repo root during
-# `agentia cicd work test` (local by default) and `agentia cicd work submit` (unless --skip-local-tests).
-# The script must exit non-zero if any check fails.
+# Agentia runs this from the repo root during `agentia cicd work test` (local by default)
+# and `agentia cicd work submit` (unless --skip-local-tests). Exit non-zero to stop the submit;
+# the output is uploaded to the user story as the local commit log.
+
+echo "## Agentia Preflight & Triage"
+agentia preflight run
+
+# Stock Agentia checks. They need the code-analyzer plugin, Apex test classes and
+# node_modules, so they run only when AGENTIA_FULL_GATES=1.
+[ "${AGENTIA_FULL_GATES:-}" = "1" ] || exit 0
 
 echo "## Running Code Analyzer"
 sf code-analyzer run

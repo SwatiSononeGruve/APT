@@ -49,3 +49,5 @@ $RECYCLE.BIN/
 .agentia/config.user.json
 .agentia/idex
 .agentia/apex.tests.*.json
+.agentia/preflight/
+.claude/settings.local.json
